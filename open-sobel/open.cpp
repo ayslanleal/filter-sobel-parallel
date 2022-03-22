@@ -54,20 +54,20 @@ int main( int argc, char** argv )
     y[1][0] =  0;  y[1][1] =  0;  y[1][2] =  0;
     y[2][0] =  1;  y[2][1] =  2;  y[2][2] =  1;
 
-    num_of_threads = 2;//omp_get_num_procs();
-    //omp_set_num_threads(num_of_threads);
+    num_of_threads = 4;
+    omp_set_num_threads(num_of_threads);
 
-    //start = omp_get_wtime();
+    start = omp_get_wtime();
+    #pragma omp parallel for private(i)
     for(j = 0; j < initialImage.rows - 2; j++ ){
-      //#pragma omp parallel for private(i)
       for(i = 0; i < initialImage.cols -2; i++ ){
-        // applay karnel in x direction
+        // kernel x
         int xValOfPixel = 
          (x[0][0] * (int)initialImage.at<uchar>(j, i    )) + (x[0][1] * (int)initialImage.at<uchar>(j + 1, i    )) + (x[0][2] * (int)initialImage.at<uchar>(j + 2, i    )) +
          (x[1][0] * (int)initialImage.at<uchar>(j, i + 1)) + (x[1][1] * (int)initialImage.at<uchar>(j + 1, i + 1)) + (x[1][2] * (int)initialImage.at<uchar>(j + 2, i + 1)) +
          (x[2][0] * (int)initialImage.at<uchar>(j, i + 2)) + (x[2][1] * (int)initialImage.at<uchar>(j + 1, i + 2)) + (x[2][2] * (int)initialImage.at<uchar>(j + 2, i + 2));
 
-        // apply karnel in y direction
+        // kernel y
         int yValOfPixel =
          (y[0][0] * (int)finalImage.at<uchar>(j, i    )) + (y[0][1] * (int)finalImage.at<uchar>(j + 1, i    )) + (y[0][2] * (int)finalImage.at<uchar>(j + 2, i    )) +
          (y[1][0] * (int)finalImage.at<uchar>(j, i + 1)) + (y[1][1] * (int)finalImage.at<uchar>(j + 1, i + 1)) + (y[1][2] * (int)finalImage.at<uchar>(j + 2, i + 1)) +
@@ -81,13 +81,10 @@ int main( int argc, char** argv )
         finalImage.at<uchar>(j, i) = (uchar)sum;
       }
     }
+    t_end = omp_get_wtime();
+    cout << "Time: " << t_end - start << endl;
     namedWindow("Minha Imagem", WINDOW_NORMAL);
     resizeWindow("Minha Imagem", 600,600);
     imshow("Minha Imagem", finalImage);
     waitKey(0);
-    //t_end = omp_get_wtime();
-
-    //cout << "Time: " << t_end - start << endl;
-
-    // display the ...
 }
