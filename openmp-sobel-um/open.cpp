@@ -37,8 +37,8 @@ int x[3][3];
 int y[3][3];
 
 /*----- OpenMP -----*/
-int num_of_threads = 2;
-int i, j;
+int num_of_threads;
+int i, j, sum, yValOfPixel, xValOfPixel;
 double start, t_end;
 
 int main(int argc, char **argv)
@@ -74,14 +74,23 @@ int main(int argc, char **argv)
   omp_set_num_threads(num_of_threads);
 
   start = omp_get_wtime();
-  //#pragma omp parallel for private(i)
-  #pragma omp default(none) private(initialImage,finalImage)
+  
+  #pragma omp parallel default(none) private(i,j) shared(initialImage,finalImage, x,y,xValOfPixel, yValOfPixel)
   {
+  #pragma omp for
   for (j = 0; j < initialImage.rows - 2; j++){
+    #pragma omp for reduction(+: xValOfPixel,yValOfPixel)
     for (i = 0; i < initialImage.cols - 2; i++){
       // kernel x
-      int xValOfPixel= x_kernel(initialImage,x,y,i,j);
-      int yValOfPixel = y_kernel(initialImage, x,y,i,j);
+      int xValOfPixel= (x[0][0] * (int)initialImage.at<uchar>(j, i)) + (x[0][1] * (int)initialImage.at<uchar>(j + 1, i)) + (x[0][2] * (int)initialImage.at<uchar>(j + 2, i)) +
+          (x[1][0] * (int)initialImage.at<uchar>(j, i + 1)) + (x[1][1] * (int)initialImage.at<uchar>(j + 1, i + 1)) + (x[1][2] * (int)initialImage.at<uchar>(j + 2, i + 1)) +
+          (x[2][0] * (int)initialImage.at<uchar>(j, i + 2)) + (x[2][1] * (int)initialImage.at<uchar>(j + 1, i + 2)) + (x[2][2] * (int)initialImage.at<uchar>(j + 2, i + 2));
+      
+      // kernel y
+      int yValOfPixel = (y[0][0] * (int)initialImage.at<uchar>(j, i)) + (y[0][1] * (int)initialImage.at<uchar>(j + 1, i)) + (y[0][2] * (int)initialImage.at<uchar>(j + 2, i)) +
+          (y[1][0] * (int)initialImage.at<uchar>(j, i + 1)) + (y[1][1] * (int)initialImage.at<uchar>(j + 1, i + 1)) + (y[1][2] * (int)initialImage.at<uchar>(j + 2, i + 1)) +
+          (y[2][0] * (int)initialImage.at<uchar>(j, i + 2)) + (y[2][1] * (int)initialImage.at<uchar>(j + 1, i + 2)) + (y[2][2] * (int)initialImage.at<uchar>(j + 2, i + 2));
+
       int sum = abs(xValOfPixel) + abs(yValOfPixel);
       if (sum > 255)
         sum = 255;
@@ -90,6 +99,7 @@ int main(int argc, char **argv)
     }
   }
   }
+
   t_end = omp_get_wtime();
   cout << "Time: " << t_end - start << endl;
   namedWindow("Minha Imagem", WINDOW_NORMAL);

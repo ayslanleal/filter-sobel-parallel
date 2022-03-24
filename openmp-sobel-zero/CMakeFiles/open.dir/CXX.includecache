@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/home/gio404/Desktop/sobel/filter-sobel-parallel/open-sobel/open.cpp
+/home/gio404/Desktop/sobel/filter-sobel-parallel/openmp-sobel-zero/open.cpp
 iostream
 -
 stdio.h

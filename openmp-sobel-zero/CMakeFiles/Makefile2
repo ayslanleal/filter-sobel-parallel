@@ -44,10 +44,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/gio404/Desktop/sobel/filter-sobel-parallel/open-sobel
+CMAKE_SOURCE_DIR = /home/gio404/Desktop/sobel/filter-sobel-parallel/openmp-sobel-zero
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/gio404/Desktop/sobel/filter-sobel-parallel/open-sobel
+CMAKE_BINARY_DIR = /home/gio404/Desktop/sobel/filter-sobel-parallel/openmp-sobel-zero
 
 #=============================================================================
 # Directory level rules for the build root directory
@@ -74,14 +74,14 @@ clean: CMakeFiles/open.dir/clean
 CMakeFiles/open.dir/all:
 	$(MAKE) -f CMakeFiles/open.dir/build.make CMakeFiles/open.dir/depend
 	$(MAKE) -f CMakeFiles/open.dir/build.make CMakeFiles/open.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/gio404/Desktop/sobel/filter-sobel-parallel/open-sobel/CMakeFiles --progress-num=1,2 "Built target open"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/gio404/Desktop/sobel/filter-sobel-parallel/openmp-sobel-zero/CMakeFiles --progress-num=1,2 "Built target open"
 .PHONY : CMakeFiles/open.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/open.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/gio404/Desktop/sobel/filter-sobel-parallel/open-sobel/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/gio404/Desktop/sobel/filter-sobel-parallel/openmp-sobel-zero/CMakeFiles 2
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/open.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/gio404/Desktop/sobel/filter-sobel-parallel/open-sobel/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/gio404/Desktop/sobel/filter-sobel-parallel/openmp-sobel-zero/CMakeFiles 0
 .PHONY : CMakeFiles/open.dir/rule
 
 # Convenience name for target.

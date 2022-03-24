@@ -48,10 +48,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/gio404/Desktop/sobel/filter-sobel-parallel/open-sobel
+CMAKE_SOURCE_DIR = /home/gio404/Desktop/sobel/filter-sobel-parallel/openmp-sobel-zero
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/gio404/Desktop/sobel/filter-sobel-parallel/open-sobel
+CMAKE_BINARY_DIR = /home/gio404/Desktop/sobel/filter-sobel-parallel/openmp-sobel-zero
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -80,9 +80,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/gio404/Desktop/sobel/filter-sobel-parallel/open-sobel/CMakeFiles /home/gio404/Desktop/sobel/filter-sobel-parallel/open-sobel/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/gio404/Desktop/sobel/filter-sobel-parallel/openmp-sobel-zero/CMakeFiles /home/gio404/Desktop/sobel/filter-sobel-parallel/openmp-sobel-zero/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/gio404/Desktop/sobel/filter-sobel-parallel/open-sobel/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/gio404/Desktop/sobel/filter-sobel-parallel/openmp-sobel-zero/CMakeFiles 0
 .PHONY : all
 
 # The main clean target

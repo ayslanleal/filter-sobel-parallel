@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/gio404/Desktop/sobel/filter-sobel-parallel/open-sobel/open.cpp" "/home/gio404/Desktop/sobel/filter-sobel-parallel/open-sobel/CMakeFiles/open.dir/open.cpp.o"
+  "/home/gio404/Desktop/sobel/filter-sobel-parallel/openmp-sobel-zero/open.cpp" "/home/gio404/Desktop/sobel/filter-sobel-parallel/openmp-sobel-zero/CMakeFiles/open.dir/open.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
