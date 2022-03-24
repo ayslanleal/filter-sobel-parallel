@@ -1,3 +1,0 @@
-/home/gio404/Desktop/sobel/filter-sobel-parallel/open-sobel/CMakeFiles/rebuild_cache.dir
-/home/gio404/Desktop/sobel/filter-sobel-parallel/open-sobel/CMakeFiles/edit_cache.dir
-/home/gio404/Desktop/sobel/filter-sobel-parallel/open-sobel/CMakeFiles/open.dir
