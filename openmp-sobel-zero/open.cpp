@@ -21,7 +21,7 @@ int x[3][3];
 int y[3][3];
 
 /*----- OpenMP -----*/
-int num_of_threads = 2;
+int num_of_threads;
 int i, j;
 double start, t_end;
 
@@ -54,11 +54,11 @@ int main(int argc, char **argv)
   y[1][0] = 0; y[1][1] = 0; y[1][2] = 0;
   y[2][0] = 1; y[2][1] = 2; y[2][2] = 1;
 
-  num_of_threads = 2;
-  omp_set_num_threads(num_of_threads);
+  //num_of_threads = 4;
+  //omp_set_num_threads(num_of_threads);
 
   start = omp_get_wtime();
-  #pragma omp parallel for private(i)
+  //#pragma omp parallel for private(i,j)
   for (j = 0; j < initialImage.rows - 2; j++)
   {
     for (i = 0; i < initialImage.cols - 2; i++)
