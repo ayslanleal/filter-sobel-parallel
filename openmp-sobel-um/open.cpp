@@ -77,7 +77,6 @@ int main(int argc, char **argv)
   
   #pragma omp parallel default(none) private(i,j) shared(initialImage,finalImage, x,y,xValOfPixel, yValOfPixel)
   {
-  #pragma omp for
   for (j = 0; j < initialImage.rows - 2; j++){
     #pragma omp for reduction(+: xValOfPixel,yValOfPixel)
     for (i = 0; i < initialImage.cols - 2; i++){
