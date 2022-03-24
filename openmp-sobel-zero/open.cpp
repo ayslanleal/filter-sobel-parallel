@@ -54,7 +54,7 @@ int main(int argc, char **argv)
   y[1][0] = 0; y[1][1] = 0; y[1][2] = 0;
   y[2][0] = 1; y[2][1] = 2; y[2][2] = 1;
 
-  num_of_threads = 4;
+  num_of_threads = 2;
   omp_set_num_threads(num_of_threads);
 
   start = omp_get_wtime();
