@@ -75,7 +75,7 @@ int main(int argc, char **argv)
 
   start = omp_get_wtime();
   
-  #pragma omp parallel default(none) private(i,j) shared(initialImage,finalImage, x,y,xValOfPixel, yValOfPixel)
+  #pragma omp parallel default(none) private(i,j,xValOfPixel, yValOfPixel) shared(initialImage,finalImage, x,y)
   {
   for (j = 0; j < initialImage.rows - 2; j++){
     #pragma omp for reduction(+: xValOfPixel,yValOfPixel)
